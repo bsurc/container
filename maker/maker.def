@@ -1,0 +1,39 @@
+Bootstrap: docker
+From: ubuntu:bionic
+
+# After building with this .def file, I mounted writeable as a sandbox and added a directory /data/home (maker couldn't create because it wants to write outside of its install home), and then re-packed.
+# A few prereqs (e.g. mysql, gfortran, gcc, etc) are installed to the container for building. Maker was ultimately put together using these compilers and installed prereqs as needed.
+# Maker itself and the remaining prereqs are installed via spack under SOFTWARE_HOME (/lfs/software on Falcon) which is bind-mounted in the container.
+
+%files
+
+%environment
+#        export PATH=${PATH}:/lfs/software/misc/maker/3.01.04/bin
+#        export LC_ALL=C
+
+%post
+        export DEBIAN_FRONTEND="noninteractive"
+        apt-get  update && apt-get install -y --no-install-recommends apt-transport-https curl ca-certificates
+        apt-get -y install wget vim git unzip zip bzip2 libssl-dev libcurl4-openssl-dev zlib1g-dev libv8-dev
+        apt-get -y install libgsl-dev libxml2-dev gnupg gnupg1 gnupg2
+
+        apt-get install -y tzdata
+        # set your timezone
+        ln -fs /usr/share/zoneinfo/America/Denver /etc/localtime
+        dpkg-reconfigure --frontend noninteractive tzdata
+
+        # Stuff for building maker
+        apt-get -y install software-properties-common
+        apt-get -y install gfortran
+        apt-get -y install libmysqlclient-dev
+
+        mkdir /data/home
+
+%runscript
+
+#!/bin/sh
+
+#/lfs/software/spack/opt/spack/linux-ubuntu18.04-broadwell/gcc-7.5.0/maker-3.01.04-ecsys77gbhd52kup3toy4ok2jy5gmy4p/bin/maker "$@"
+/data/home/apache/maker/maker/maker/bin/maker "$@"
+
+%startscript
