@@ -1,12 +1,16 @@
 Bootstrap: docker
-From: rockylinux:8
+From: rockylinux:9
 
 %files
     /cm/shared/apps/mathematica/14.1.0 /opt/mathematica
 
 %post
+    dnf install -y epel-release
     yum update -y
-    yum install -y xz findutils ncurses
+    yum install -y xz findutils ncurses freetype mesa-libGL fontconfig \
+        qt6-qtbase
+    strip --remove-section=.note.ABI-tag /usr/lib64/libQt6Core.so.6.6.2
+
 
 %environment
     export LC_ALL=C.UTF-8
