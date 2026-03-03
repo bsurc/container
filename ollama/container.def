@@ -2,7 +2,7 @@ Bootstrap: docker
 From: ollama/ollama:{{ OLLAMA_TAG }}
 
 %arguments
-	OLLAMA_TAG=latest
+	OLLAMA_TAG=0.17.5
 	OLLAMA_LIBRARY_URL=https://ollama.com/library
 
 %post
@@ -101,3 +101,6 @@ From: ollama/ollama:{{ OLLAMA_TAG }}
 %help
 	This is a simple container for running Ollama. For more information, visit https://ollama.ai.
 
+%labels
+  author Jenny Fothergill <jennyfothergill@boisestate.edu>
+  github.com/bsurc/container git rev={{GIT_REV}}
