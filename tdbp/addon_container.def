@@ -1,8 +1,9 @@
 Bootstrap: docker
-From: nvidia/cuda:12.9.0-cudnn-devel-ubuntu24.04
+From: ubuntu:noble-20260210.1
 
 %files
     # Built on borah-login2
+    # tarfile addon_programs_Ubuntu_24_04_4_LTS.tar.gz
     addons /opt/addons
 
 %post
