@@ -2,6 +2,7 @@ Bootstrap: docker
 From: nvidia/cuda:12.4.1-cudnn-runtime-ubuntu22.04
 
 %files
+    # tarfile TDBP_gpu_Ubuntu22_04_20231201.tar.gz
     TDBP_gpu2 /opt/TDBP_gpu
 
 %post
