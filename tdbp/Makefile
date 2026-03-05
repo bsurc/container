@@ -2,6 +2,9 @@ GIT_REV = $(shell git rev-parse --short=16 HEAD)
 container.sif: container.def
 	apptainer build -F --build-arg GIT_REV=$(GIT_REV) container.sif container.def
 
+addon_container.sif: addon_container.def
+	apptainer build -F --build-arg GIT_REV=$(GIT_REV) addon_container.sif addon_container.def
+
 .PHONY: clean
 clean:
-	rm -f *.sif
+	rm -f *container.sif
