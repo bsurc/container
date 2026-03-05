@@ -8,7 +8,7 @@ From: rockylinux:9
     dnf install -y epel-release
     yum update -y
     yum install -y xz findutils ncurses freetype mesa-libGL fontconfig \
-        qt6-qtbase
+        qt6-qtbase alsa-lib libxkbcommon libglvnd-egl
     strip --remove-section=.note.ABI-tag /usr/lib64/libQt6Core.so.6.6.2
 
 
