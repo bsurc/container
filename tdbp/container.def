@@ -10,11 +10,11 @@ From: nvidia/cuda:12.9.0-cudnn-devel-ubuntu24.04
     apt install -y libfftw3-single3 libgdal34t64 libgomp1 liblapacke git cmake \
         gcc
     cd /opt
-    git clone --depth 1 --branch v12.9 https://github.com/NVIDIA/cuda-samples.git
-    cd cuda-samples
-    mkdir build && cd build
-    cmake ..
-    make
+    #git clone --depth 1 --branch v12.9 https://github.com/NVIDIA/cuda-samples.git
+    #cd cuda-samples
+    #mkdir build && cd build
+    #cmake ..
+    #make
 
 
 %environment
