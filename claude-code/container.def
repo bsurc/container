@@ -1,0 +1,9 @@
+Bootstrap: docker
+From: ubuntu:24.04
+
+%post
+  curl -fsSL https://claude.ai/install.sh | bash
+
+%labels
+  author Jenny Fothergill <jennyfothergill@boisestate.edu>
+  github.com/bsurc/container git rev={{GIT_REV}}
