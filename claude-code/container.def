@@ -2,7 +2,14 @@ Bootstrap: docker
 From: ubuntu:24.04
 
 %post
+  apt update -y
+  apt install -y curl
   curl -fsSL https://claude.ai/install.sh | bash
+  mkdir /opt/claude
+  mv ~/.local/bin /opt/claude/
+
+%environment
+    export PATH="/opt/claude/bin:$PATH"
 
 %labels
   author Jenny Fothergill <jennyfothergill@boisestate.edu>
