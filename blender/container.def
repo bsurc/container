@@ -1,16 +1,25 @@
 Bootstrap: docker
-From: nvidia/cuda:13.2.1-cudnn-devel-rockylinux8
+from: debian:bookworm
 
 %files
     blender-5.1.1-linux-x64 /opt/blender-5.1.1-linux-x64
 
 %post
-    yum update -y
-    dnf install -y gcc gcc-c++ git git-lfs subversion make cmake \
-        mesa-libGL-devel mesa-libEGL-devel libX11-devel libXxf86vm-devel \
-        libXi-devel libXcursor-devel libXrandr-devel libXinerama-devel
-    dnf install -y wayland-devel wayland-protocols-devel libxkbcommon-devel \
-        dbus-devel kernel-headers libSM
+    apt update
+    apt install -y \
+        curl \
+        libegl1-mesa \
+        libfontconfig \
+        libgl1-mesa-glx \
+        libglu1-mesa \
+        libglib2.0-0 \
+        libgomp1 \
+        libsm6 \
+        libtree \
+        libxcb-* \
+        libxkbcommon-x11-0 \
+        libxrender-dev \
+        libxi-dev
 
 
 %environment
