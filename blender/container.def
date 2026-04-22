@@ -8,10 +8,9 @@ From: nvidia/cuda:13.2.1-cudnn-devel-rockylinux8
     yum update -y
     dnf install -y gcc gcc-c++ git git-lfs subversion make cmake \
         mesa-libGL-devel mesa-libEGL-devel libX11-devel libXxf86vm-devel \
-        libXi-devel libXcursor-devel libXrandr-devel libXinerama-devel \
-        libstdc++-static
+        libXi-devel libXcursor-devel libXrandr-devel libXinerama-devel
     dnf install -y wayland-devel wayland-protocols-devel libxkbcommon-devel \
-        dbus-devel kernel-headers
+        dbus-devel kernel-headers libSM
 
 
 %environment
