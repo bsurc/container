@@ -1,0 +1,30 @@
+Bootstrap: docker
+from: debian:bookworm
+
+%files
+    blender-5.1.1-linux-x64 /opt/blender-5.1.1-linux-x64
+
+%post
+    apt update
+    apt install -y \
+        curl \
+        libegl1-mesa \
+        libfontconfig \
+        libgl1-mesa-glx \
+        libglu1-mesa \
+        libglib2.0-0 \
+        libgomp1 \
+        libsm6 \
+        libtree \
+        libxcb-* \
+        libxkbcommon-x11-0 \
+        libxrender-dev \
+        libxi-dev
+
+
+%environment
+    export PATH="/opt/blender-5.1.1-linux-x64:$PATH"
+
+%labels
+    author Jenny Fothergill <jennyfothergill@boisestate.edu>
+    github.com/bsurc/container git rev={{GIT_REV}}

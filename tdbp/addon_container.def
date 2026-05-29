@@ -1,0 +1,20 @@
+Bootstrap: docker
+From: ubuntu:noble-20260210.1
+
+%files
+    # Built on borah-login2
+    # tarfile addon_programs_Ubuntu_24_04_4_LTS.tar.gz
+    addons /opt/addons
+
+%post
+    export DEBIAN_FRONTEND=NONINTERACTIVE
+    apt update -y
+    apt install -y libfftw3-single3 libgdal34t64 libgomp1 liblapacke
+
+
+%environment
+    export PATH="/opt/addons:$PATH"
+
+%labels
+  author Jenny Fothergill <jennyfothergill@boisestate.edu>
+  github.com/bsurc/container git rev={{GIT_REV}}
